@@ -1,0 +1,14 @@
+# Get a list of all of the yml files to process
+files := $(wildcard *.yml)
+
+# Convert the list of *.yml files to *.txt files
+need := $(files:%.yml=%.txt)
+
+# Best target name ever.
+# Target that has a list of needs (txt files)
+nastyasmellbetter: $(need)
+
+# Target to generate txt files from yml files
+# command is fake, obviously
+%.txt: %.yml
+	echo "custodianbot --in-file $^ --report $@"
